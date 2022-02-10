@@ -10,9 +10,7 @@ pub async fn start_client(host: String, port: String) {
     let address = format!("{}:{}", host, port);
     let socket = TcpStream::connect(address).await.unwrap();
     let (mut reader, mut writer) = io::split(socket);
-
     let (new_message_sender, mut new_message_receiver): (Sender<String>, Receiver<String>) = mpsc::channel(100);
-
     tokio::spawn(async move {
         let res = socket_reader(&mut reader, new_message_sender).await;
         if res.is_err() {
