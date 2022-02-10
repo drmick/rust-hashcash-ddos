@@ -9,7 +9,7 @@ To prevent a DDOS attack, we use the Hashcash algorithm for confirming the work 
 5. The server writes the hash from the message to the store so that the client cannot use it a second time
 6. The server returns a response to the client
 
-####Launch server
+#### Launch server
 
 ```
 docker-compose -f docker-compose.server.yml build
