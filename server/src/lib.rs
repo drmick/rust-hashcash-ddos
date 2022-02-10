@@ -45,7 +45,6 @@ pub async fn start_server(address: &str, worlds_of_wisdom: Arc<Vec<String>>) {
 pub fn read_file(filename: &str) -> Vec<String> {
     let file = File::open(filename).expect("file of words not found");
     let reader = BufReader::new(file);
-
     let mut vec = vec![];
     for line in reader.lines() {
         if let Ok(..) = line {
