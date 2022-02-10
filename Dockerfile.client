@@ -1,0 +1,6 @@
+FROM rust:latest
+
+COPY ./client/src ./client/src
+COPY ./client/Cargo.lock ./client/Cargo.lock
+COPY ./client/Cargo.toml ./client/Cargo.toml
+COPY ./lib ./lib

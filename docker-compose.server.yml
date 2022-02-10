@@ -1,0 +1,15 @@
+version: "3"
+services:
+  server:
+    build: 
+      dockerfile: Dockerfile.server
+      context: ""
+    container_name: test-server
+    working_dir: "/var/www/app"
+    ports:
+      - "45000:45000"
+    volumes:
+      - ./:/var/www/app
+    command: "cargo run --manifest-path ./server/Cargo.toml --release"
+    restart: unless-stopped
+    network_mode: host

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  client:
+    build: 
+      dockerfile: Dockerfile.client
+      context: ""
+    container_name: test-client
+    working_dir: "/var/www/app"
+    volumes:
+      - ./:/var/www/app
+    command: "cargo run --manifest-path ./client/Cargo.toml --release"
+    restart: unless-stopped
+    network_mode: host

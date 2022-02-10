@@ -1,0 +1,12 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.16.1", features = ["full"] }
+serde = { version="1.0.136" , features = ["derive"]}
+sha3 = "0.10.0"
+uuid = { version="1.0.0-alpha.1", features = ["serde", "v4"]}
+lib = { path = "../lib" }
+rand = "0.8.4"
