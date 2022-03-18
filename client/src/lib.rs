@@ -10,7 +10,8 @@ pub async fn start_client(host: String, port: String) {
     let address = format!("{}:{}", host, port);
     let socket = TcpStream::connect(address).await.unwrap();
     let (mut reader, mut writer) = io::split(socket);
-    let (new_message_sender, mut new_message_receiver): (Sender<String>, Receiver<String>) = mpsc::channel(100);
+    let (new_message_sender, mut new_message_receiver): (Sender<String>, Receiver<String>) =
+        mpsc::channel(100);
     tokio::spawn(async move {
         let res = socket_reader(&mut reader, new_message_sender).await;
         if res.is_err() {
@@ -32,8 +33,8 @@ async fn router(receiver: &mut Receiver<String>) {
 pub fn solve_hash(message: Uuid) -> String {
     println!("Solving hash started for message: {}", message);
     let mut hasher = Sha3_256::new();
-    let mut i:i32 = 0;
-    let mut result_string ;
+    let mut i: i32 = 0;
+    let mut result_string;
     loop {
         i = i + 1;
         result_string = format!("{}:{}", message, i);
